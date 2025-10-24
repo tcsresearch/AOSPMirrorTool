@@ -1,4 +1,6 @@
-From: 
+# README-BuildKernels
+
+Taken From: 
 https://source.android.com/docs/setup/build/building-kernels
 
 ## Intro ##
@@ -18,15 +20,15 @@ Download the sources for the appropriate branch:
 
     repo sync
 
-# Note #
-For a list of repo branches (BRANCH) that can be used with the previous `repo init` command, see Kernel branches and their build systems.
+> [!NOTE]
+> For a list of repo branches (BRANCH) that can be used with the previous `repo init` command, see Kernel branches and their build systems.
 
 
 For details on downloading and compiling kernels for Pixel devices, See Building Pixel Kernels.
 Note: You can switch among different branches within one Repo checkout. The common kernel manifests (and most others) define the kernel git repository to be cloned fully (not shallow), which enables fast switching among them. Switching to a different branch is similar to initializing a branch; the -u parameter is optional. For example, to switch to common-android-mainline from your existing Repo checkout, run:
     $ repo init -b common-android-mainline && repo sync.
 
-Build the kernel
+## Build the kernel ##
 Build with Bazel (Kleaf)
 Note: To identify when you can use Kleaf to build a kernel, and build instructions and commands, see Kernel branches and their build systems.
 
@@ -51,7 +53,7 @@ Note: Common kernels are generic, customizable kernels and therefore don't defin
 The kernel binary, modules, and corresponding image are located in the out/BRANCH/dist directory.
 Build the vendor modules for the virtual device
 
-# Note #
+> [!NOTE]
 Android 13 introduced building kernels with Bazel (Kleaf), replacing build.sh.
 
 
@@ -154,17 +156,17 @@ Set the variable POST_DEFCONFIG_CMDS to a statement that is evaluated right afte
 
 A common example is disabling link time optimization (LTO) for crosshatch kernels during development. While LTO is beneficial for released kernels, the overhead at build time can be significant. The following snippet added to the local build.config disables LTO persistently when using build/build.sh.
 
-POST_DEFCONFIG_CMDS="check_defconfig && update_debug_config"
-function update_debug_config() {
-    ${KERNEL_DIR}/scripts/config --file ${OUT_DIR}/.config \
-         -d LTO \
-         -d LTO_CLANG \
-         -d CFI \
-         -d CFI_PERMISSIVE \
-         -d CFI_CLANG
-    (cd ${OUT_DIR} && \
-     make O=${OUT_DIR} $archsubarch CC=${CC} CROSS_COMPILE=${CROSS_COMPILE} olddefconfig)
-}
+    POST_DEFCONFIG_CMDS="check_defconfig && update_debug_config"
+    function update_debug_config() {
+        ${KERNEL_DIR}/scripts/config --file ${OUT_DIR}/.config \
+             -d LTO \
+             -d LTO_CLANG \
+             -d CFI \
+             -d CFI_PERMISSIVE \
+             -d CFI_CLANG
+        (cd ${OUT_DIR} && \
+         make O=${OUT_DIR} $archsubarch CC=${CC} CROSS_COMPILE=${CROSS_COMPILE} olddefconfig)
+    }
 
 
 ### Identify Kernel Versions ###
@@ -181,7 +183,7 @@ The AOSP tree contains prebuilt kernel versions. The git log reveals the correct
 /NAME
 
 
-git log --max-count=1
+    git log --max-count=1
 
 If the kernel version isn't listed in the git log, obtain it from the system image, as described below.
 Kernel version from system image
@@ -216,8 +218,8 @@ Build a boot image for devices without init_boot (legacy)
 
 For devices without the init_boot partition, you need a ramdisk binary, which you can obtain by downloading a GKI boot image and unpacking it. Any GKI boot image from the associated Android release will work.
 
-tools/mkbootimg/unpack_bootimg.py --boot_img=boot-5.4-gz.img
-mv $KERNEL_ROOT/out/ramdisk gki-ramdisk.lz4
+    tools/mkbootimg/unpack_bootimg.py --boot_img=boot-5.4-gz.img
+    mv $KERNEL_ROOT/out/ramdisk gki-ramdisk.lz4
 
 The target folder is the top-level directory of the kernel tree (the current working directory).
 
