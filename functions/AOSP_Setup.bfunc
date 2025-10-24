@@ -16,8 +16,11 @@ function Setup_AOSP_Repo() {
 }
 
 function AOSP_Repo_Sync(){
-	# TODO: Get # of core via proc and use as variable.
-	repo sync -c -j8
+	# Get number of CPU cores.
+	NumberOfCPUs=`nproc --all`
+	echo "# Of CPUs: $NumberOfCPUs."
+	# repo sync -c -j8
+	repo sync -c -j$NumberOfCPUs
 }
 
 
