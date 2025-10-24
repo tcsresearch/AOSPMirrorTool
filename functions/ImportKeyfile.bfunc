@@ -1,0 +1,13 @@
+## TODO: ensure config is read first.
+#	 Echo location and name of keyfile.
+
+function ImportKeyFile() {
+	## FIXME: Add else to if statement for exitingand error if keyfile not exist.
+	if [ -f $AOSP_KeyFile ]; then
+		echo "Keyfile: $AOSP_KeyFile"
+		echo "Importing Keyfile..."
+		gpg --import $AOSP_KeyFile
+		echo "Keyfile Imported Successfully."
+	fi
+}
+

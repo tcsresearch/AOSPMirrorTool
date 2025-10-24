@@ -1,0 +1,5 @@
+function GetPWD() {
+	current_directory=$(pwd)
+	echo "The current directory is: $current_directory"
+}
+

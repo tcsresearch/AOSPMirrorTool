@@ -1,0 +1,39 @@
+# Determine the distro
+# Here are some known OSes:
+# - On Mac: Darwin
+# - On FreeBSD or GhostBSD: FreeBSD
+# - On Fedora: fedora
+# - On Ubuntu: ubuntu
+# - On Raspbian: raspbian
+
+function DetectOS() {
+    if [[ -f /etc/os-release ]]
+    then
+        # On Linux systems
+        source /etc/os-release
+        echo $ID
+    else
+        # On systems other than Linux (e.g. Mac or FreeBSD)
+        uname
+    fi
+}
+
+
+## Usage ##
+#
+#
+   case $(DetectOS) in
+    	case raspbian)
+        	echo This is Raspbian
+        	;;
+    	case fedora)
+        	echo This is Fedora
+        	;;
+    	case ubuntu)
+        	echo This is Ubuntu
+        	;;
+    	case Darwin)
+        	echo This is macOS
+        	;;
+	esac
+

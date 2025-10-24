@@ -1,0 +1,38 @@
+function DoesAOSPFolderExist() {
+	if ! -d AOSP ]; then
+		echo "AOSP does not exist.  Creating..."
+		mkdir -p AOSP
+		echo "AOSP Folder Created Successfully."
+	fi
+}
+
+
+
+function Setup_AOSP_Repo() {
+	cd AOSP
+	echo "Initializing AOSP Source Repo..."
+	repo init --partial-clone -b android-latest-release -u https://android.googlesource.com/platform/manifest
+	echo "AOSP Source Repo Cloned Successfully."
+}
+
+function AOSP_Repo_Sync(){
+	# TODO: Get # of core via proc and use as variable.
+	repo sync -c -j8
+}
+
+
+function BuildAOSP() {
+	echo "Running envsetup.sh..."
+	source build/envsetup.sh
+	echo " "
+	echo "Running Lunch..."
+	lunch aosp_cf_x86_64_only_phone-aosp_current-userdebug
+	echo " Lunch Run Completed Successfully."
+	echo " "
+	echo " Running Build..."
+	# Running Make
+	m
+}
+
+	
+

@@ -1,0 +1,16 @@
+Core functionality to load functions and config is ready.
+	Use Loader.sh
+
+Need to test each function and use program to download AOSP sources and build
+	What about other scripts besides 'lunch' ? brunch, etc.
+
+Add capability to use 3rd party forks, incl.
+	- LineageOS
+	- Android-x86
+	- Android Auto
+	- Android TV
+
+Need to create and integrate kernel functions.
+
+
+

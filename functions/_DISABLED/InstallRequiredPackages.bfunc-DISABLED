@@ -1,0 +1,53 @@
+# TODO: Call list of packages from AOSP_RequiredPackages.list
+
+# TODO: Make Fedora Compatible
+
+##### Install - AOSP Required Packages #####
+##########################################################################################################################################################
+
+function Load_AOSP_RequiredPackages_List() {
+	AOSP_RequiredPackagesListFile="$ConfigDir/$AOSP_RequiredPackages.list"
+	if [ -f "$AOSP_RequiredPackagesListFile" ]; then
+		echo "Loading AOSP Required Packages List from file..."
+		source ./$AOSP_RequiredPackagesListFile
+		echo "List file loaded successfully. "
+}
+
+function InstallRequiredPackages_Direct() {
+	sudo apt-get install git-core gnupg flex bison build-essential zip curl zlib1g-dev libc6-dev-i386 x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig
+}
+
+function InstallRequiredPackages_FromList() {
+	# TODO: Get result and enable error handling.
+	echo "Installing Required Prerequisite Packages..."
+	sudo $pkgmgr install `cat $AOSP_RequiredPackagesListFile`
+	echo "Required Prerequisite Packages Installed Successfully."
+}
+
+############################################################################################################################################################
+
+
+
+##### Install - Repo #####
+############################################################################################################################################################
+
+function Installrepo() {
+        sudo $pkgmgr install repo
+}
+
+function Install Repo_Manually() {
+	echo "Installing Repo Manually..."
+	export REPO=$(mktemp /tmp/repo.XXXXXXXXX)
+	curl -o ${REPO} https://storage.googleapis.com/git-repo-downloads/repo
+	gpg --recv-keys 8BB9AD793E8E6153AF0F9A4416530D5E920F5C65
+	curl -s https://storage.googleapis.com/git-repo-downloads/repo.asc | gpg --verify - ${REPO} && install -m 755 ${REPO} ~/bin/repo
+	echo "Repo Manual Install Completed Successfuly."
+}
+
+function RunOSUpdate() {
+#        TODO: Enable error handling.
+        sudo $pkgmgr update
+}
+
+############################################################################################################################################################
+

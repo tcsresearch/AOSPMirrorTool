@@ -1,0 +1,28 @@
+# TODO: Call list of packages from AOSP_RequiredPackages.list
+
+# TODO: Make Fedora Compatible
+
+##### Install - AOSP Required Packages #####
+##########################################################################################################################################################
+
+function Load_AOSP_RequiredPackages_List() {
+	AOSP_RequiredPackagesListFile="$ConfigDir/$AOSP_RequiredPackages.list"
+	if [ -f "$AOSP_RequiredPackagesListFile" ]; then
+		echo "Loading AOSP Required Packages List from file..."
+		source ./$AOSP_RequiredPackagesListFile
+		echo "List file loaded successfully. "
+}
+
+function InstallRequiredPackages_Direct() {
+	sudo apt-get install git-core gnupg flex bison build-essential zip curl zlib1g-dev libc6-dev-i386 x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig
+}
+
+function InstallRequiredPackages_FromList() {
+	# TODO: Get result and enable error handling.
+	echo "Installing Required Prerequisite Packages..."
+	sudo $pkgmgr install `cat $AOSP_RequiredPackagesListFile`
+	echo "Required Prerequisite Packages Installed Successfully."
+}
+
+############################################################################################################################################################
+

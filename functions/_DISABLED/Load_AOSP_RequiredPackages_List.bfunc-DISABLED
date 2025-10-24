@@ -1,0 +1,17 @@
+# TODO: Call list of packages from AOSP_RequiredPackages.list
+
+# TODO: Make Fedora Compatible
+
+##### Install - AOSP Required Packages #####
+##########################################################################################################################################################
+
+function Load_AOSP_RequiredPackages_List() {
+	AOSP_RequiredPackagesListFile="$ConfigDir/$AOSP_RequiredPackages.list"
+	if [ -f "$AOSP_RequiredPackagesListFile" ]; then
+		echo "Loading AOSP Required Packages List from file..."
+		source ./$AOSP_RequiredPackagesListFile
+		echo "List file loaded successfully. "
+}
+
+############################################################################################################################################################
+

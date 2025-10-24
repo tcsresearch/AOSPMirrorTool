@@ -1,0 +1,9 @@
+function VerifyRepoVersion() {
+	repo version
+}
+
+function Repo_SelfUpdate() {
+	repo selfupdate
+}
+
+

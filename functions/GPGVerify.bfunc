@@ -1,0 +1,4 @@
+function VerifyTag() {
+# TODO: Specify $TAG_NAME as $1 parameter / use -z for Usage.
+	git tag -v $TAG_NAME
+}

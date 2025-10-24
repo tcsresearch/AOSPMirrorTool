@@ -1,0 +1,16 @@
+# TODO: Call list of packages from AOSP_RequiredPackages.list
+
+# TODO: Make Fedora Compatible
+
+##### Install - AOSP Required Packages #####
+##########################################################################################################################################################
+
+function InstallRequiredPackages_FromList() {
+	# TODO: Get result and enable error handling.
+	echo "Installing Required Prerequisite Packages..."
+	sudo $pkgmgr install `cat $AOSP_RequiredPackagesListFile`
+	echo "Required Prerequisite Packages Installed Successfully."
+}
+
+############################################################################################################################################################
+
