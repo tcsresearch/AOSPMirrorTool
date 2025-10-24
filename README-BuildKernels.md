@@ -16,7 +16,7 @@ Download the sources for the appropriate branch:
 
     repo init -u https://android.googlesource.com/kernel/manifest -b BRANCH
 
-repo sync
+    repo sync
 
 # Note #
 For a list of repo branches (BRANCH) that can be used with the previous `repo init` command, see Kernel branches and their build systems.
@@ -34,9 +34,7 @@ Android 13 introduced building kernels with Bazel.
 
 To create a distribution for the GKI kernel for the aarch64 architecture, check out an Android Common Kernel branch no earlier than Android 13 and then run the following command:
 
-    tools/bazel run //common:kernel_aarch64_dist [-- --destdir=$DIST_DIR
-
-]
+    tools/bazel run //common:kernel_aarch64_dist [-- --destdir=$DIST_DIR ]
 
 Thereafter the kernel binary, modules, and corresponding images are located in the $DIST_DIR directory. If --destdir is unspecified, see output of the command for the location of the artifacts. For details, refer to the documentation on AOSP.
 Build with build.sh (legacy)
@@ -47,6 +45,7 @@ For branches at or below Android 12, OR branches without Kleaf:
     build/build.sh
 
 Note: Common kernels are generic, customizable kernels and therefore don't define a default configuration. See Customize the kernel build to find out how to specify the build configuration for common kernels. For example, to build the GKI kernel for the aarch64 platform, run:
+
     $ BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh
 
 The kernel binary, modules, and corresponding image are located in the out/BRANCH/dist directory.
@@ -58,9 +57,7 @@ Android 13 introduced building kernels with Bazel (Kleaf), replacing build.sh.
 
 To create a distribution for the virtual_device's modules, run:
 
-    tools/bazel run //common-modules/virtual-device:virtual_device_x86_64_dist [-- --destdir=$DIST_DIR
-
-]
+    tools/bazel run //common-modules/virtual-device:virtual_device_x86_64_dist [-- --destdir=$DIST_DIR ]
 
 
 For more details on building Android kernels with Bazel, see. Kleaf - Building Android Kernels with Bazel.
@@ -74,7 +71,8 @@ In Android 12 Cuttlefish and Goldfish converge, so they share the same kernel: v
 
     BUILD_CONFIG=common-modules/virtual-device/build.config.virtual_device.x86_64 build/build.sh
 
-    Android 11 introduced GKI, which separates the kernel into a Google-maintained kernel image and vendor maintained-modules, which are built separately.
+> [!NOTE]
+> Android 11 introduced GKI, which separates the kernel into a Google-maintained kernel image and vendor maintained-modules, which are built separately.
 
 This example shows a kernel image configuration:
 
@@ -207,9 +205,7 @@ For devices with the init_boot partition, the boot image is built along with the
 
 For example, with Kleaf, you may build the GKI boot image with:
 
-    tools/bazel run //common:kernel_aarch64_dist [-- --destdir=$DIST_DIR
-
-]
+    tools/bazel run //common:kernel_aarch64_dist [-- --destdir=$DIST_DIR ]
 
 With build/build.sh (legacy), you may build the GKI boot image with:
 
