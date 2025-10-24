@@ -1,3 +1,5 @@
+# README-SetupAOSP_AI-Generated
+
 
 ## Explanation ##
 Command | What It Does |
@@ -34,14 +36,14 @@ Run the script:             `./setup_aosp_fedora.sh` <br>
 
 ## Important Notes ##
 
-    Review and Customize:
+### Review and Customize:
     This script provides a general setup. You may need to adjust the installed packages or configurations based on your specific AOSP version and development needs.
     
-    Java Version:
+### Java Version:
     AOSP typically requires a specific Java version (often OpenJDK 8). Ensure the correct version is installed and configured.
     
-    Root Privileges:
+### Root Privileges:
     The script uses sudo for package installation and system-wide configurations, so you will be prompted for your password.
     
-    Reboot:
+### Reboot:
     A reboot might be necessary after installing certain packages or configuring udev rules.
