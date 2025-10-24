@@ -1,5 +1,5 @@
 function DoesAOSPFolderExist() {
-	if ! -d AOSP ]; then
+	if ! [ -d AOSP ]; then
 		echo "AOSP does not exist.  Creating..."
 		mkdir -p AOSP
 		echo "AOSP Folder Created Successfully."
