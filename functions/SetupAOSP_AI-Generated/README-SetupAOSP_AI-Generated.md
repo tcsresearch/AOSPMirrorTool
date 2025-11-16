@@ -1,12 +1,24 @@
 # README-SetupAOSP_AI-Generated
 
 
-## Explanation ##
+## Explanation Of Commands Referenced Within The Script ##
 Command | What It Does |
 |---|---|
 `set -e` | Ensures the script exits if any command fails. 
 `sudo dnf update -y` | Updates all installed packages to ensure you have the latest versions.
-`sudo dnf install -y ...` | Installs all the necessary packages for building AOSP. This includes:
+`sudo dnf install -y ...` | Installs all the necessary packages for building AOSP (See 'Required Packages' below.)
+`sudo alternatives --config java / javac` | Allows you to select the correct Java version if multiple are installed.
+
+## Explanation Of items Referenced Within The Script ##
+Item | What It Does |
+|---|---|
+`Python 2 setup` | Comments on the potential need for Python 2 for older AOSP versions and how to configure it if necessary.
+`Udev rules` | Explains how to set up udev rules for proper ADB/Fastboot device recognition, which might be needed in addition to android-tools.
+`Git configuration` | Sets your global Git user name and email. 
+
+## Required Packages ##
+Package Name | What It Does |
+|---|---|
 `git-core` | Version control.
 `gnupg` | Gnu Privacy Guard for verifying signatures.
 `flex, bison, gperf` | Parser generators.
@@ -23,10 +35,6 @@ Command | What It Does |
 `rsync` | File synchronization.
 `ccache` | Compiler cache for faster builds.
 `android-tools` | Provides adb and fastboot. 
-`sudo alternatives --config java / javac` | Allows you to select the correct Java version if multiple are installed.
-`Python 2 setup` | Comments on the potential need for Python 2 for older AOSP versions and how to configure it if necessary.
-`Udev rules` | Explains how to set up udev rules for proper ADB/Fastboot device recognition, which might be needed in addition to android-tools.
-`Git configuration` | Sets your global Git user name and email. 
 
 ## Usage ## 
 
