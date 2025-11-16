@@ -2,7 +2,7 @@
 A BASH-based utility that will enable setup, creation, and maintenence of Android source code for local development.
 
 It is based on instructions from <a href="https://source.android.com" target="new">source.android.com</a>, but also tweaked for added compatibility with Fedora. <br>
-AOSPMirrorTool will allow easy, automated setup of a local development environment based on those instructions. <br>
+Once properly developed, AOSPMirrorTool will allow easy, automated setup of a local development environment based on those instructions. <br>
 <hr>
 <h3> Proposed Features - Short Term </h3>
 <ul>
@@ -28,8 +28,6 @@ AOSPMirrorTool will allow easy, automated setup of a local development environme
 
 > [!NOTE]
 > This code is in the very early stages of development and is far from complete. <br>
-> It is based on instructions from source.android.com, but also tweaked for compatibility with Fedora. <br>
-> AOSPMirrorTool will allow easy setup of a local development environment based on those instructions, automating them.
 <hr>
 
 > [!WARNING]
