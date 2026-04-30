@@ -35,7 +35,7 @@ function DisplayVars() {
 function SanityCheck_GetVer_File_Exists() {
 	if [ ! -f $GetVer_Folder/$GetVer_File ]; then
 		echo "ERROR! File $GetVer_Folder/GetVer_File does NOT exist! Quitting..."
-		break
+		return
 	else
 		echo "Found File: $GetVer_Folder/$GetVer_File."
 		echo " "
