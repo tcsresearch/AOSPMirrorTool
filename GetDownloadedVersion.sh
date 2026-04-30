@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Define Variables #
 GetVer_Folder="AOSP_Source/.repo/manifests"
 GetVer_File="default.xml"
