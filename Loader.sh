@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ## Specify Folders for config and functions ##
 ConfigDir="./config"
 ConfigFile="config.ini"
