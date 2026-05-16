@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 case $(get_distro) in 
     raspbian) echo "This is Raspbian" ;; 
     fedora)   echo "This is Fedora" ;; 
