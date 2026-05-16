@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TODO: Add Sanity Check.
+# From DetectOS1.sh / Fixed by Google AI
 
 # Define the get_distro function so the command works
 get_distro() {
