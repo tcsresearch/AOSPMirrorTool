@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source ./DetectOS.bfunc
 
 case $(get_distro) in
