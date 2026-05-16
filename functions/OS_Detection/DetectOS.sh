@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# TODO: Adsd Sanity Check.
 source ./DetectOS.bfunc
 
 case $(get_distro) in
