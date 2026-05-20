@@ -10,6 +10,10 @@ function SanityChecker_FuncFileExists() {
     fi
 }
 
+# Run Sanity Check Function / Source Functions File #
+SanityChecker_FuncFileExists
+
+# Determine OS #
 case $(get_distro) in
     raspbian) 
         echo "This is Raspbian" 
