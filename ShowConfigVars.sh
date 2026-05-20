@@ -8,6 +8,7 @@ function SanityCheck_CfgFile() {
     echo "ERROR! $CfgFile NOT Found. Quiting..."
     return
   else
+   # shellcheck source=/dev/null
    source $CfgFile
   fi
 }
@@ -16,10 +17,10 @@ function SanityCheck_CfgFile() {
 SanityCheck_CfgFile
 
 function ShowConfig() {
-  echo "AOSP Home Directory:  	$AOSP_HomeDir "
+  echo "AOSP Home Directory:  	    $AOSP_HomeDir "
   echo "Config Dir:  		        $ConfigDir    "
   echo "Config File: 		        $ConfigFile   "
-  echo "Functions Dir: 		      $FunctionsDir "
+  echo "Functions Dir: 		        $FunctionsDir "
 }
 
 # Show Config #
