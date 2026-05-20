@@ -18,3 +18,4 @@ jobs:
         with: 
           ignore_paths:
             _Old
+        shellcheck_flags: "-x"
