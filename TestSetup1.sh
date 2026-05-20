@@ -1,13 +1,12 @@
 #!/bin/env bash
 
-# Define Folders #
+### Define Folders ###
 # AOSP_ConfigDir="config"
 # AOSP_FuncDir="functions"
 
-# ReadConfigINI.bconf
-#### config.ini ###
-echo "Sourcing config.ini"
-source ./config/config.ini
+#### AOSPMirrorTool.conf ###
+echo "Sourcing Config..."
+source ./config/AOSPMirrorTool.conf
 
 
 ### functions ###
