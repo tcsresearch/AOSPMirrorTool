@@ -1,3 +1,5 @@
+#!/bin/env bash
+
 # Define Config File
 CfgFile="config/AOSPMirrorTool.conf"
 
