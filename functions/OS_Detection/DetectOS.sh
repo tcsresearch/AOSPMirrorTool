@@ -4,16 +4,19 @@
 source ./DetectOS.bfunc
 
 case $(get_distro) in
-    case raspbian)
-        echo This is Raspbian
+    raspbian) 
+        echo "This is Raspbian" 
         ;;
-    case fedora)
-        echo This is Fedora
+    fedora) 
+        echo "This is Fedora" 
         ;;
-    case ubuntu)
-        echo This is Ubuntu
+    ubuntu) 
+        echo "This is Ubuntu" 
         ;;
-    case Darwin)
-        echo This is macOS
+    Darwin) 
+        echo "This is macOS" 
+        ;;
+    *)
+        echo "Unknown distribution"
         ;;
 esac
