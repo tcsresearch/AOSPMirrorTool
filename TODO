@@ -1,6 +1,9 @@
 Core functionality to load functions and config is ready.
 	Use Loader.sh
 
+
+Update .bfunc files with updated code from scripts.
+
 Need to test each function and use program to download AOSP sources and build
 	What about other scripts besides 'lunch' ? brunch, etc.
 
