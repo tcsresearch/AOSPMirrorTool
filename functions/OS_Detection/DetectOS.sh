@@ -3,6 +3,7 @@
 function SanityChecker_FuncFileExists() {
     OSD_FuncFile="DetectOS.bfunc"
     if [ -f "$OSD_FuncFile" ]; then
+        # shellcheck source=/dev/null
         source "$OSD_FuncFile"
     else
     echo "ERROR!  Functions File $OSD_FuncFile NOT Found. Quitting..."
