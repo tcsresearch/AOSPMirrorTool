@@ -1,5 +1,6 @@
 #!/bin/env bash
-
+# ShowAOSPVersion.sh - New script to display AOSP source version on local repo.
+#					   Supercedes both CheckAndroidSourceVersion.sh and GetDownloadedVersion.sh by combining them into a single script.
 
 # Define Variables #
 GetVer_Folder="AOSP_Source/.repo/manifests"
