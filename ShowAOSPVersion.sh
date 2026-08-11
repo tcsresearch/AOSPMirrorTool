@@ -21,7 +21,7 @@ function NewLine() {
 }
 
 
-function DisplayVars() {
+function ShowVars() {
 	echo "GetVer_Folder: $GetVer_Folder"
 	echo "GetVer_File: $GetVer_File"
 #	echo "GetVerCMD: $GetVer_CMD"
@@ -73,7 +73,9 @@ function CheckAndroidSourceVersion() {
 
 # Main Program #
 
-# DisplayVars
+ ShowVars
+ NewLine 
+ 
  SanityCheck_GetVer_File_Exists
 # GetVer_Static
  GetVer_Dynamic
