@@ -11,19 +11,15 @@ GetVerCMD_String="default revision"
 NumOfChars="21"
 
 ###################################################################################################################
+# Define Functions #																							  #
+###################################################################################################################
 
-# Define Functions #
-function GetVer_Static() {
-	cat AOSP_Source/.repo/manifests/default.xml | grep "default revision" | cut -c 21-
+#----- Display Functions -----#
+
+function NewLine() {
+	echo " "
 }
 
-function GetVer_Dynamic() {
-	# 				    Read File	 Find String		  Don't display certain characters / - is required.
-#	echo "Downloaded Android Release: " && cat $GetVer_Folder/$GetVer_File | grep $GetVerCMD_String | cut -c $NumOfChars-
-	 echo "Downloaded Android Release: " && cat $GetVer_Folder/$GetVer_File | grep "default revision" | cut -c $NumOfChars-
-###	  echo "Downloaded Android Release: " && cat $GetVer_Folder/$GetVer_File 
-
-}
 
 function DisplayVars() {
 	echo "GetVer_Folder: $GetVer_Folder"
@@ -33,6 +29,9 @@ function DisplayVars() {
 	echo "NumOfChars: $NumOfChars"
 	echo " "
 }
+
+
+#----- Sanity Check Function -----#
 
 function SanityCheck_GetVer_File_Exists() {
 	if [ ! -f $GetVer_Folder/$GetVer_File ]; then
@@ -44,6 +43,23 @@ function SanityCheck_GetVer_File_Exists() {
 	fi
 }
 
+
+#----- GetVer Functions -----#
+
+function GetVer_Static() { # Not currently In Use.
+	cat AOSP_Source/.repo/manifests/default.xml | grep "default revision" | cut -c 21-
+}
+
+function GetVer_Dynamic() {
+	# 				    Read File	 Find String		  Don't display certain characters / - is required.
+#	echo "Downloaded Android Release: " && cat $GetVer_Folder/$GetVer_File | grep $GetVerCMD_String | cut -c $NumOfChars-
+	 echo "Downloaded Android Release: " && cat $GetVer_Folder/$GetVer_File | grep "default revision" | cut -c $NumOfChars-
+###	  echo "Downloaded Android Release: " && cat $GetVer_Folder/$GetVer_File 
+
+}
+
+
+#----- CheckAndroidSourceVersion Function -----#
 
 function CheckAndroidSourceVersion() {
 	echo "Checking Android Source Version..."
@@ -61,7 +77,7 @@ function CheckAndroidSourceVersion() {
  SanityCheck_GetVer_File_Exists
 # GetVer_Static
  GetVer_Dynamic
- 
+ NewLine
 
 ### Run Our Function ###
 CheckAndroidSourceVersion
