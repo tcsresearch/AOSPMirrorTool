@@ -88,6 +88,6 @@ ConfigureUdevRules
 ConfigureGit
 
 SetE_Disable
-Display_SetyupCompleteMsg
+Display_SetupCompleteMsg
 
 
