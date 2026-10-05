@@ -77,13 +77,16 @@ function Display_SetupCompletMsg() {
 
 SetE_Enable
 Display_StartMsg
+
 UpdateSystemPackages
 InstallRequiredPackages
 
 ConfigureJavaAlternatives
 # SetupPython2ForOlderAOSPVersions
+
 ConfigureUdevRules
 ConfigureGit
+
 SetE_Disable
 Display_SetyupCompleteMsg
 
