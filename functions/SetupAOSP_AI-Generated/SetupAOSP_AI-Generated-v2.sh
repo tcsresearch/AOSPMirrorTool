@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-function SetE_Enable()
+function SetE_Enable() {
 # Exit immediately if a command exits with a non-zero status.
   set -e
 }
