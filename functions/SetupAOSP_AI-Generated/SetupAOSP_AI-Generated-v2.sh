@@ -1,5 +1,22 @@
 #!/bin/env bash
 
+###########################################################################################################################################################
+# Configurations #                                                                                                                                        #
+###########################################################################################################################################################
+
+Udev_Subsystem="usb"
+Udev_DeviceVendorID="VendorID"
+Udev_Mode="0666" # Chmod permissions?
+Udev_Group="adbusers"
+Udev_RulesFile="/etc/udev/rules.d/51-android.rules"
+
+Git_UserName="John Doe"
+Git_Email="user@email.com"
+
+###########################################################################################################################################################
+# Define Functions #                                                                                                                                      #
+###########################################################################################################################################################
+
 function SetE_Enable() {
 # Enable Exit immediately if a command exits with a non-zero status.
   set -e
@@ -51,9 +68,10 @@ function ConfigureUdevRules() {
 # 5. Configure udev rules for ADB/Fastboot (if not already handled by android-tools)
 echo "Configuring udev rules for Android devices..."
 # You might need to add specific udev rules for your devices if the default ones are insufficient.
-### TODO: Set parameters below.
+### TODO: Change parameters below to use variables in Configuration section.
 # Example:
 # echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="<YOUR_DEVICE_VENDOR_ID>", MODE="0666", GROUP="adbusers"' | sudo tee /etc/udev/rules.d/51-android.rules
+echo 'SUBSYSTEM=="$Udev_Subsystem", ATTR{idVendor}=="$Udev_VendorDeviceID", MODE="$Udev_Mode", GROUP="$Udev_Group"' | sudo tee $Udev_RulesFile
 # sudo usermod -a -G adbusers $USER
 # sudo udevadm control --reload-rules
 # sudo udevadm trigger
@@ -62,9 +80,12 @@ echo "Configuring udev rules for Android devices..."
 function ConfigureGit() {
 # 6. Configure git
   echo "Configuring Git..."
-  ### TODO: Set parameters below.
-  git config --global user.name "Your Name"
-  git config --global user.email "you@example.com"
+  ### TODO: Change parameters below to use variables in Configuration section.
+    git config --global user.name "$Git_UserName"
+  # git config --global user.name "Your Name"
+  # git config --global user.email "you@example.com"
+    git config --global user.email "$Git_Email"
+
 }
 
 function Display_SetupCompletMsg() {
