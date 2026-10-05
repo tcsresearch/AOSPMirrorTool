@@ -1,8 +1,13 @@
 #!/bin/env bash
 
 function SetE_Enable() {
-# Exit immediately if a command exits with a non-zero status.
+# Enable Exit immediately if a command exits with a non-zero status.
   set -e
+}
+
+function SetE_Disable() {
+# Disable Exit immediately if a command exits with a non-zero status.
+  set +e
 }
 
 function Display_StartMsg() {
@@ -79,6 +84,7 @@ ConfigureJavaAlternatives
 # SetupPython2ForOlderAOSPVersions
 ConfigureUdevRules
 ConfigureGit
+SetE_Disable
 Display_SetyupCompleteMsg
 
 
