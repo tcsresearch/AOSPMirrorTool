@@ -31,6 +31,27 @@ function Display_StartMsg() {
   echo "Starting AOSP build environment setup on Fedora..."
 }
 
+function Pause() {
+  read -n 1 -s -r -p "Press any key to continue..."
+  echo ""
+}
+
+function ShowConfig() {
+  echo "Configuration"
+  echo "-------------------------------------------------------------------------"
+  echo "Udev Settings"
+  echo "   Udev Subsystem: $Udev_Subsystem"
+  echo "   Udev Device Vendor ID: $Udev_DeviceVendorID"
+  echo "   Udev Mod: $Udev_Mode"
+  echo "   Udev Group: $Udev_Group"
+  echo "   Udev Rules File: $Udev_RulesFile"
+  echo " "
+  echo "Git Settings"
+  echo "   Git Username: $Git_UserName"
+  echo "   Git Email: $Git_Email"
+  echo " "
+}
+
 function UpdateSystemPackages() {
 # 1. Update the system
   echo "Updating system packages..."
@@ -96,6 +117,9 @@ function Display_SetupCompletMsg() {
 ###########################################################################################################################################################
 # Main Program #                                                                                                                                          #
 ###########################################################################################################################################################
+
+ShowConfig
+Pause
 
 SetE_Enable
 Display_StartMsg
