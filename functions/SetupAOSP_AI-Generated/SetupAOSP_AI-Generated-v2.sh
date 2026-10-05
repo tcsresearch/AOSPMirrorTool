@@ -49,9 +49,9 @@ function SetupPython2ForOlderAOSPVersions() {
 
 function ConfigureUdevRules() {
 # 5. Configure udev rules for ADB/Fastboot (if not already handled by android-tools)
-### TODO: Set parameters below.
 echo "Configuring udev rules for Android devices..."
 # You might need to add specific udev rules for your devices if the default ones are insufficient.
+### TODO: Set parameters below.
 # Example:
 # echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="<YOUR_DEVICE_VENDOR_ID>", MODE="0666", GROUP="adbusers"' | sudo tee /etc/udev/rules.d/51-android.rules
 # sudo usermod -a -G adbusers $USER
@@ -62,6 +62,7 @@ echo "Configuring udev rules for Android devices..."
 function ConfigureGit() {
 # 6. Configure git
   echo "Configuring Git..."
+  ### TODO: Set parameters below.
   git config --global user.name "Your Name"
   git config --global user.email "you@example.com"
 }
