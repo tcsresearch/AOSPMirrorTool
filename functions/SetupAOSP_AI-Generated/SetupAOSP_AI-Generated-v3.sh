@@ -13,12 +13,15 @@ Udev_RulesFile="/etc/udev/rules.d/51-android.rules"
 Git_UserName="John Doe"
 Git_Email="user@email.com"
 
+Colors_File="Colors2.conf"
+
 ###########################################################################################################################################################
 # Colors #	                                                                                                                                          #
 ###########################################################################################################################################################
 
 # Define Our Colors
 # NEW Sep 14, 2026: Added orange color.
+### TODO: Use external Colors2.conf file.
 
   black=$(tput setaf 0)
   red=$(tput setaf 1)
@@ -55,6 +58,8 @@ function SetE_Disable() {
   set +e
 }
 
+### TODO: Add Sanity Checker function to confirm $Udev_RulesFile and $Colors_File are present.
+
 function Display_StartMsg() {
   echo "Starting AOSP build environment setup on Fedora..."
 }
@@ -78,6 +83,9 @@ function ShowConfig() {
   echo "${brightred} Git Settings ${reset}"
   echo "   ${brightblue} Git Username: ${brightwhite} $Git_UserName ${reset}"
   echo "   ${brightblue} Git Email: ${brightwhite} $Git_Email ${reset}"
+  echo " "
+  echo "${brightred} Colors Settings ${reset}"
+  echo "  ${brightblue} Colors File: ${brightwhite} $Colors_File ${reset}"
   echo " "
 }
 
@@ -122,6 +130,7 @@ echo "Configuring udev rules for Android devices..."
 # Example:
 # echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="<YOUR_DEVICE_VENDOR_ID>", MODE="0666", GROUP="adbusers"' | sudo tee /etc/udev/rules.d/51-android.rules
 echo 'SUBSYSTEM=="$Udev_Subsystem", ATTR{idVendor}=="$Udev_VendorDeviceID", MODE="$Udev_Mode", GROUP="$Udev_Group"' | sudo tee $Udev_RulesFile
+### TODO: Determine if the following 3 lines should be re-enabled or not.
 # sudo usermod -a -G adbusers $USER
 # sudo udevadm control --reload-rules
 # sudo udevadm trigger
@@ -130,7 +139,7 @@ echo 'SUBSYSTEM=="$Udev_Subsystem", ATTR{idVendor}=="$Udev_VendorDeviceID", MODE
 function ConfigureGit() {
 # 6. Configure git
   echo "Configuring Git..."
-  ### TODO: Change parameters below to use variables in Configuration section.
+  ### TESTME: Change parameters below to use variables in Configuration section.
     git config --global user.name "$Git_UserName"
   # git config --global user.name "Your Name"
   # git config --global user.email "you@example.com"
@@ -154,12 +163,18 @@ SetE_Enable
 Display_StartMsg
 
 UpdateSystemPackages
+Pause 
+
 InstallRequiredPackages
+Pause
 
 ConfigureJavaAlternatives
 # SetupPython2ForOlderAOSPVersions
+Pause
 
 ConfigureUdevRules
+Pause
+
 ConfigureGit
 
 SetE_Disable
