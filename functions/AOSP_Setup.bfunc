@@ -9,7 +9,7 @@ function DoesAOSPFolderExist() {
 
 
 function Setup_AOSP_Repo() {
-	cd AOSP
+	cd AOSP || return
 	echo "Initializing AOSP Source Repo..."
 	repo init --partial-clone -b android-latest-release -u https://android.googlesource.com/platform/manifest
 	echo "AOSP Source Repo Cloned Successfully."
@@ -17,10 +17,10 @@ function Setup_AOSP_Repo() {
 
 function AOSP_Repo_Sync(){
 	# Get number of CPU cores.
-	NumberOfCPUs=`nproc --all`
+	NumberOfCPUs=$(nproc --all)
 	echo "# Of CPUs: $NumberOfCPUs."
 	# repo sync -c -j8
-	repo sync -c -j$NumberOfCPUs
+	repo sync -c -j"$NumberOfCPUs"
 }
 
 
