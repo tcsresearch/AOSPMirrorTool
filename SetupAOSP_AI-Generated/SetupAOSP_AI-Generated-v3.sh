@@ -5,7 +5,7 @@
 ###########################################################################################################################################################
 
 Udev_Subsystem="usb"
-Udev_DeviceVendorID="VendorID"
+Udev_DeviceVendorID="VendorID" # Change this to match.
 Udev_Mode="0666" # Chmod permissions?
 Udev_Group="adbusers"
 Udev_RulesFile="/etc/udev/rules.d/51-android.rules"
