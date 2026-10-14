@@ -13,7 +13,7 @@ function CheckConfigFile() {
     fi
 }
 
-## function ReadConfigINI() {
+function ReadConfigINI() {
     # Read and export variables from the config file
     while IFS='=' read -r key value; do
         # Remove leading/trailing whitespace from key and value
@@ -24,7 +24,7 @@ function CheckConfigFile() {
         if [[ "$key" =~ ^#.* || -z "$key" ]]; then
             continue
         fi
-## }
+}
 
 ## function ExportConfigVars() {
         # Export the variable
