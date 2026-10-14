@@ -1,3 +1,5 @@
+#!/bin/env bash
+
 # Define Our Colors
 # NEW Sep 14, 2026: Added orange color.
 
