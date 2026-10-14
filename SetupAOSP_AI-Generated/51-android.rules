@@ -1,0 +1,4 @@
+SUBSYSTEM=="usb"
+ATTR{idVendor}==="VendorID" # Change this to match.
+MODE="0666" # Chmod permissions?
+GROUP="adbusers"
