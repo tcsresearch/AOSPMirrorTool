@@ -1,7 +1,7 @@
     #!/bin/bash
 
 function CheckConfigFile() {
-    CONFIG_FILE="~/config/config.ini"
+    CONFIG_FILE="$HOME/config/config.ini"
 
     echo "Config File: $CONFIG_FILE"
     echo " "
