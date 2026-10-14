@@ -22,7 +22,7 @@ function DetectOS() {
 ## Usage ##
 #
 #
-   case $(DetectOS) in
+   case "${DetectOS}" in
     	case raspbian)
         	echo This is Raspbian
         	;;
