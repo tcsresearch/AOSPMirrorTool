@@ -1,0 +1,6 @@
+git-core gnupg flex bison gperf build-essential zip curl zlib-devel gcc-c++ \
+    libstdc++-devel glibc-devel libX11-devel libXrender-devel libXrandr-devel \
+    libXi-devel libXt-devel libtool libxml2-devel libxslt-devel \
+    perl-Digest-SHA java-1.8.0-openjdk java-1.8.0-openjdk-devel \
+    python2 python3 python3-devel ImageMagick libpng-devel xz \
+    repo rsync ccache android-tools
