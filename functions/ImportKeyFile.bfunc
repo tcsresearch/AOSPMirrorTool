@@ -6,7 +6,7 @@ function ImportKeyFile() {
 	if [ -f $AOSP_KeyFile ]; then
 		echo "Keyfile: $AOSP_KeyFile"
 		echo "Importing Keyfile..."
-		gpg --import $AOSP_KeyFile
+		gpg --import "$AOSP_KeyFile"
 		echo "Keyfile Imported Successfully."
 	fi
 }
