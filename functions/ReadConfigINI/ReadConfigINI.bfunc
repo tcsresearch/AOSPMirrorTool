@@ -1,4 +1,4 @@
-    #!/bin/bash
+   #/bin/env bash
 
     CONFIG_FILE="~/config/config.ini"
 
