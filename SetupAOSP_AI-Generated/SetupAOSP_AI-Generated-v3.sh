@@ -129,7 +129,10 @@ echo "Configuring udev rules for Android devices..."
 ### TODO: Change parameters below to use variables in Configuration section.
 # Example:
 # echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="<YOUR_DEVICE_VENDOR_ID>", MODE="0666", GROUP="adbusers"' | sudo tee /etc/udev/rules.d/51-android.rules
-echo 'SUBSYSTEM=="$Udev_Subsystem", ATTR{idVendor}=="$Udev_VendorDeviceID", MODE="$Udev_Mode", GROUP="$Udev_Group"' | sudo tee $Udev_RulesFile
+## echo 'SUBSYSTEM=="$Udev_Subsystem", ATTR{idVendor}=="$Udev_VendorDeviceID", MODE="$Udev_Mode", GROUP="$Udev_Group"' | sudo tee $Udev_RulesFile
+UdevRuleString='SUBSYSTEM=="$Udev_Subsystem", ATTR{idVendor}=="$Udev_VendorDeviceID", MODE="$Udev_Mode", GROUP="$Udev_Group"'
+echo "$UdevRuleString" | sudo tee "Udev_RulesFile" # New test Oct 2026 for possible fix of SC2016.
+
 ### TODO: Determine if the following 3 lines should be re-enabled or not.
 # sudo usermod -a -G adbusers $USER
 # sudo udevadm control --reload-rules
