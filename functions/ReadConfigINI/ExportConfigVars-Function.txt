@@ -1,0 +1,8 @@
+function ExportConfigVars() {
+        # Export the variable
+        export "$key=$value"
+        echo "Exported: $key=$value"
+    done < "$CONFIG_FILE"
+
+    echo "Variables from $CONFIG_FILE exported to the environment."
+}
