@@ -12,7 +12,7 @@ case "${unameOut}" in
     *)          OS="UNKNOWN:${unameOut}"
 esac
 
-echo ${OS};
+echo "${OS}";
 
 if [[ ${OS} == "Mac" ]] && sysctl -n machdep.cpu.brand_string | grep -q 'Apple M1'; then
     OS="MacM1"
