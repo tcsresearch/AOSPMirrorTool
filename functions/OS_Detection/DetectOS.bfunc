@@ -25,17 +25,21 @@ DetectOS() {
 #
 #
    case "${DetectOS}" in
-    	case raspbian)
-        	echo This is Raspbian
-        	;;
-    	case fedora)
-        	echo This is Fedora
-        	;;
-    	case ubuntu)
-        	echo This is Ubuntu
-        	;;
-    	case Darwin)
-        	echo This is macOS
-        	;;
-	esac
+    raspbian)
+        echo "This is Raspbian"
+        ;;
+    fedora)
+        echo "This is Fedora"
+        ;;
+    ubuntu)
+        echo "This is Ubuntu"
+        ;;
+    Darwin)
+        echo "This is macOS"
+        ;;
+    *)
+        echo "Unknown OS: ${DetectOS}"
+        ;;
+esac
+
 
