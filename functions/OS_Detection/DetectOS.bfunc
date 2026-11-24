@@ -6,17 +6,19 @@
 # - On Ubuntu: ubuntu
 # - On Raspbian: raspbian
 
-function DetectOS() {
-    if [[ -f /etc/os-release ]]
-    then
-        # On Linux systems
-        source /etc/os-release
-        echo $ID
+DetectOS() {
+    if [[ -f /etc/os-release ]]; then
+        # Run in a subshell to avoid polluting the global namespace
+        (
+            source /etc/os-release
+            printf '%s\n' "${ID,,}"
+        )
     else
-        # On systems other than Linux (e.g. Mac or FreeBSD)
-        uname
+        # Fallback for macOS (Darwin), FreeBSD, etc., normalized to lowercase
+        uname -s | tr '[:upper:]' '[:lower:]'
     fi
 }
+
 
 
 ## Usage ##
