@@ -1,4 +1,4 @@
-MaintenenceTasks.bfunc - various functions related to maintenence of an AOSP mirror.
+# MaintenenceTasks.bfunc - various functions related to maintenence of an AOSP mirror.
 
 function CleanPartialSync() {
   find .repo -name "tmp_pack_*" -delete
