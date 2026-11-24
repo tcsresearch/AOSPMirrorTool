@@ -14,17 +14,28 @@ function CheckConfigFile() {
 }
 
 function ReadConfigINI() {
-    # Read and export variables from the config file
-    while IFS='=' read -r key value; do
-        # Remove leading/trailing whitespace from key and value
-        key=$(echo "$key" | xargs)
-        value=$(echo "$value" | xargs)
+    local config_file="$1"
 
-        # Skip comments and empty lines
-        if [[ "$key" =~ ^#.* || -z "$key" ]]; then
+    [[ -f "$config_file" ]] || return 1
+
+    # Read and export variables from the config file
+    while IFS='=' read -r key value || [[ -n "$key" ]]; do
+        # Remove leading/trailing whitespace from key and value
+        key="${key#"${key%%[![:space:]]*}"}"
+        key="${key%"${key##*[![:space:]]}"}"
+        value="${value#"${value%%[![:space:]]*}"}"
+        value="${value%"${value##*[![:space:]]}"}"
+
+        # Skip comments, section headers, and empty lines
+        if [[ "$key" =~ ^[[:space:]]*[#\;] || "$key" =~ ^\[.*\] || -z "$key" ]]; then
             continue
         fi
+
+        # Export the variable
+        export "$key=$value"
+    done < "$config_file"
 }
+
 
 ## function ExportConfigVars() {
         # Export the variable
