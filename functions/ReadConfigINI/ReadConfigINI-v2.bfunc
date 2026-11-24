@@ -35,11 +35,38 @@ function ReadConfigINI() { # Fixed using Google AI 11/23/2026.
 }
 
 
-function ExportConfigVars() {
-        # Export the variable
-        export "$key=$value"
-        echo "Exported: $key=$value"
-    done < "$CONFIG_FILE"
+ExportConfigVars() {
+    local config_file="${1:-$CONFIG_FILE}"
 
-    echo "Variables from $CONFIG_FILE exported to the environment."
+    if [[ ! -f "$config_file" ]]; then
+        echo "Error: Config file '$config_file' not found." >&2
+        return 1
+    fi
+
+    while IFS='=' read -r key value || [[ -n "$key" ]]; do
+        # Trim leading and trailing whitespace
+        key="${key#"${key%%[![:space:]]*}"}"
+        key="${key%"${key##*[![:space:]]}"}"
+        value="${value#"${value%%[![:space:]]*}"}"
+        value="${value%"${value##*[![:space:]]}"}"
+
+        # Skip empty lines, comments (# or ;), and section headers ([...])
+        [[ -z "$key" || "$key" == \#* || "$key" == \;* || "$key" == \[* ]] && continue
+
+        # Strip optional surrounding single or double quotes from the value
+        if [[ "$value" =~ ^\"(.*)\"$ || "$value" =~ ^\'(.*)\'$ ]]; then
+            value="${BASH_REMATCH[1]}"
+        fi
+
+        # Validate that the key is a legal Bash variable name before exporting
+        if [[ "$key" =~ ^[a-zA-Z_][a-zA-Z0-9_]*$ ]]; then
+            export "$key=$value"
+            echo "Exported: $key=$value"
+        else
+            echo "Warning: Skipping invalid variable name '$key'" >&2
+        fi
+    done < "$config_file"
+
+    echo "Variables from $config_file exported successfully."
 }
+
