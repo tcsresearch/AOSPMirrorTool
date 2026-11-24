@@ -1,3 +1,5 @@
+# shellcheck source=/dev/null
+
 function DoesAOSPFolderExist() {
 	if ! [ -d AOSP ]; then
 		echo "AOSP does not exist.  Creating..."
