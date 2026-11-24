@@ -1,0 +1,12 @@
+function ReadConfigINI() {
+    # Read and export variables from the config file
+    while IFS='=' read -r key value; do
+        # Remove leading/trailing whitespace from key and value
+        key=$(echo "$key" | xargs)
+        value=$(echo "$value" | xargs)
+
+        # Skip comments and empty lines
+        if [[ "$key" =~ ^#.* || -z "$key" ]]; then
+            continue
+        fi
+}
