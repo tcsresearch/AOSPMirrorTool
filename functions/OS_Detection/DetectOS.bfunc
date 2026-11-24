@@ -1,3 +1,5 @@
+# shellcheck source=/dev/null
+
 # Determine the distro
 # Here are some known OSes:
 # - On Mac: Darwin
