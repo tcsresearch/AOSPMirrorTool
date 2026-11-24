@@ -13,7 +13,7 @@ function CheckConfigFile() {
     fi
 }
 
-function ReadConfigINI() {
+function ReadConfigINI() { # Fixed using Google AI 11/23/2026.
     local config_file="$1"
 
     # Read and export variables from the config file
